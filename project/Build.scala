@@ -49,7 +49,9 @@ object Build extends Build {
   lazy val core = Project(
     id = "core",
     base = file("./core")
-  ).settings(Defaults.coreDefaultSettings ++ commonSettings ++ Seq(libraryDependencies ++= coreDependencies))
+  )
+    .dependsOn(domain)
+    .settings(Defaults.coreDefaultSettings ++ commonSettings ++ Seq(libraryDependencies ++= coreDependencies))
 
   lazy val domain = Project(
     id = "domain",
